@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'prayer_list_page.dart'; // lib/ 안에 있는 경우
+import 'package:flutter/foundation.dart'; // kIsWeb 사용
+import 'package:firebase_core/firebase_core.dart';
 
 
 
@@ -15,6 +17,18 @@ import 'prayer_list_page.dart'; // lib/ 안에 있는 경우
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+   options: FirebaseOptions(
+        apiKey: "AIzaSyAIcphsdYXt1z87xmrZwLrWq5nz_cFJb0I",
+        "1:197957387807:web:dd8ad5f4ae379d7ca0372a",
+        messagingSenderId: "197957387807",
+        projectId: "myeventapp-95cac",
+        storageBucket: "myeventapp-95cac.firebasestorage.app",
+      ),
+    );
+  } else {
+    await Firebase.initializeApp();
+  }
+
   runApp(MyApp());
 }
 
