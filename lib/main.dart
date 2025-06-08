@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,21 +9,19 @@ import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'prayer_list_page.dart'; // lib/ 안에 있는 경우
 import 'package:flutter/foundation.dart'; // kIsWeb 사용
-import 'package:firebase_core/firebase_core.dart';
-
-
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-   options: FirebaseOptions(
+
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
         apiKey: "AIzaSyAIcphsdYXt1z87xmrZwLrWq5nz_cFJb0I",
-        "1:197957387807:web:dd8ad5f4ae379d7ca0372a",
-        messagingSenderId: "197957387807",
+        authDomain: "myeventapp-95cac.firebaseapp.com",
         projectId: "myeventapp-95cac",
-        storageBucket: "myeventapp-95cac.firebasestorage.app",
+        storageBucket: "myeventapp-95cac.appspot.com",
+        messagingSenderId: "197957387807",
+        appId: "1:197957387807:web:dd8ad5f4ae379d7ca0372a",
       ),
     );
   } else {
@@ -31,6 +30,7 @@ void main() async {
 
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   @override
